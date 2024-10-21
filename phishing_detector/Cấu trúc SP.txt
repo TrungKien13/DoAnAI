@@ -1,0 +1,9 @@
+phishing_detector/
+│
+├── app.py            # Tệp chính để chạy ứng dụng
+├── database.py       # Kết nối và thao tác với SQL
+├── phishing_model.py # Huấn luyện và lưu mô hình Decision Tree
+├── url_checker.py    # Kiểm tra URL với mô hình
+├── gui.py            # Giao diện người dùng
+└── requirements.txt  # Thư viện cần thiết
+
