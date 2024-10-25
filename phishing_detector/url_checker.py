@@ -1,11 +1,16 @@
-from phishing_model import PhishingModel
+# url_checker.py
 
 class URLChecker:
-    def __init__(self):
-        self.model = PhishingModel()
-        self.model.load_model('model.pkl', 'vectorizer.pkl')  # Tải mô hình đã huấn luyện
+    def __init__(self, db):
+        self.db = db
 
-    def check_url(self, url):
-        """Kiểm tra URL có an toàn hay không."""
-        prediction = self.model.predict(url)
-        return "URL an toàn!" if prediction == 0 else "URL có thể độc hại!"
+    def check(self, url):
+        # Kiểm tra URL (ví dụ: regex hoặc từ điển)
+        if "malicious" in url:
+            result = "URL có khả năng độc hại."
+        else:
+            result = "URL an toàn."
+
+        # Log kết quả vào cơ sở dữ liệu
+        self.db.log_history('url', url, result)
+        return result
